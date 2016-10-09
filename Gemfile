@@ -11,6 +11,8 @@ group :development do
   # Code reloading
   # See: http://hanamirb.org/guides/applications/code-reloading
   gem 'shotgun'
+  gem 'pry'
+  gem 'pry-byebug'
 end
 
 group :test, :development do
