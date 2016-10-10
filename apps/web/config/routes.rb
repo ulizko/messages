@@ -3,5 +3,5 @@
 #
 # Example:
 # get '/hello', to: ->(env) { [200, {}, ['Hello from Hanami!']] }
-post '/message', to: 'messages#create'
+post '/link', to: 'messages#create'
 get '/', to: 'messages#new'

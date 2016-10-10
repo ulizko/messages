@@ -1,19 +1,20 @@
 module Web::Controllers::Messages
   class Create
     include Web::Action
-    include Hanami::Validations
     
     expose :message
     
-    validations do
-      required(:text) { filled? & str? }
+    params do
+      required(:message).schema do
+        required(:text).filled
+      end
     end
 
     def call(params)
       if params.valid?
-        # prying(params)
+        prying(params)
         @message = MessageRepository.create(Message.new(params[:message]))
-        redirect_to '/'
+        # redirect_to '/link'
       else
         self.status = 422
       end
