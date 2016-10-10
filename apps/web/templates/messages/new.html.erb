@@ -2,16 +2,21 @@
   <div class="errors">
     <h3>There was a problem with your submissions</h3>
     <ul>
-      <% params.errors.each do |e| %>
-        <li><%= e.attribute_name %> is invalid</li>
+      <% params.error_messages.each do |error| %>
+        <li><%= error %></li>
       <% end %>
-    </ul>
   </div>
 <% end %>
 
 <%=
-  form_for :message, '/message' do
-    text_area :text
+  form_for :message, '/link' do
+    div class: 'heading' do
+      h1 'Add New Message'
+    end
+    div class: 'input' do
+      label      :text
+      text_area :text, class: 'form-control'
+    end
     submit 'Create Message'
   end
 %>
