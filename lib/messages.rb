@@ -40,6 +40,10 @@ Hanami::Model.configure do
       attribute :id,   Integer
       attribute :text, String
       attribute :url, String
+      attribute :time_of_destroy, DateTime
+      attribute :visits_limit, Integer
+      attribute :visits_count, Integer
+      attribute :hours_to_destroy, Integer
     end
   end
 end.load!
