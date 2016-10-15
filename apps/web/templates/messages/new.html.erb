@@ -20,7 +20,8 @@
     end
     div class: 'input' do
       label      :password
-      text_field  :password, class: 'form-control', onkeyup: "encode();"
+      text_field  :password, class: 'form-control'
+      button      'Encrypt', onclick: 'encode();', type: "button"
     end
     div do
       h3 'Select options for destroy message' 
