@@ -6,6 +6,7 @@ gem 'hanami',       '~> 0.8'
 gem 'hanami-model', '~> 0.6'
 
 gem 'pg'
+gem "core_ext"
 
 group :development do
   # Code reloading
@@ -22,8 +23,9 @@ end
 group :test do
   gem 'rspec'
   gem 'capybara'
+  gem 'timecop'
 end
 
 group :production do
-  # gem 'puma'
+  gem 'puma'
 end
