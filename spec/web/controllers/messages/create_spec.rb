@@ -2,10 +2,24 @@ require_relative '../../../../apps/web/controllers/messages/create'
 
 RSpec.describe Web::Controllers::Messages::Create do
   let(:action) { described_class.new }
-  let(:params) { Hash[] }
+  
+  before do
+    MessageRepository.clear
+  end
 
-  it 'is successful' do
-    response = action.call(params)
-    expect(response[0]).to eq 200
+  context 'when not valid params' do
+    let(:params) { Hash[message: {}] }
+    it 'is failure' do
+      response = action.call(params)
+      expect(response[0]).to eq 422
+    end
+  end
+  
+  context 'when valid params' do
+    let(:params) { Hash[message: {text: 'New Message!', hours_to_destroy: 2}] }
+    it 'is successful' do
+      response = action.call(params)
+      expect(response[0]).to eq 200
+    end
   end
 end

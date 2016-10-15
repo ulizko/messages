@@ -1,5 +1,6 @@
 require 'hanami/model'
 require 'hanami/mailer'
+require 'core_ext/integer'
 Dir["#{ __dir__ }/messages/**/*.rb"].each { |file| require_relative file }
 
 Hanami::Model.configure do
