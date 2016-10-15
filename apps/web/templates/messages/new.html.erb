@@ -18,6 +18,10 @@
       label      :text
       text_area :text, class: 'form-control'
     end
+    div class: 'input' do
+      label      :password
+      text_field  :password, class: 'form-control', onkeyup: "encode();"
+    end
     div do
       h3 'Select options for destroy message' 
     end
