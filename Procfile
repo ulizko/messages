@@ -1,1 +1,1 @@
-worker: bundle exec sidekiq -d -L log/sidekiq.log --require config/sidekiq.rb -c 2
+worker: bundle exec sidekiq -d -L log/sidekiq.log --require config/environment.rb -c 2
