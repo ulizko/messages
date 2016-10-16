@@ -2,11 +2,21 @@
 <html>
   <head>
     <title>Spy Messages</title>
+    <%= stylesheet 'grid.min.css' %>
+    <%= stylesheet 'form.min.css' %>
+    <%= stylesheet 'button.min.css' %>
+    <%= stylesheet 'input.min.css' %>
+    <%= stylesheet 'message.min.css' %>
+    <%= javascript 'form.min.js' %>
     <%= javascript 'aes.js' %>
     <%= javascript 'functions.js' %>
     <%= favicon %>
   </head>
   <body>
-    <%= yield %>
+    <div class="ui four column centered grid">
+      <div class="column">
+        <%= yield %>
+      </div>
+    </div>
   </body>
 </html>

@@ -1,5 +1,5 @@
 <% unless params.valid? %>
-  <div class="errors">
+  <div class="ui warning message">
     <h3>There was a problem with your submissions</h3>
     <ul>
       <% params.error_messages.each do |error| %>
@@ -9,34 +9,34 @@
 <% end %>
 
 <%=
-  form_for :message, '/link' do
-    hidden_field '_csrf_token'
+  form_for :message, '/link', class: "ui form" do
+    hidden_field '_csrf_token', value: csrf_token
     div class: 'heading' do
       h3 'Add New Message'
     end
-    div class: 'input' do
+    div class: 'field' do
       label      :text
-      text_area :text, class: 'form-control'
+      text_area :text, rows: 4
     end
-    div class: 'input' do
+    div class: 'field' do
       label      :password
-      text_field  :password, class: 'form-control'
-      button      'Encrypt', onclick: 'encode();', type: "button"
+      text_field  :password
     end
-    div class: 'input' do
+    button      'Encrypt', onclick: 'encode();', type: "button", class: "ui grey button"
+    div class: 'field' do
       hidden_field :encrypted
     end
     div do
       h3 'Select options for destroy message' 
     end
-    div class: 'input' do
+    div class: 'inline field"' do
       label :hours_to_destroy
       number_field :hours_to_destroy
     end
-    div class: 'input' do
+    div class: 'inline field"' do
       label :visits_limit
       number_field :visits_limit
     end
-    submit 'Create Message'
+    submit 'Create Message', class: "ui grey button"
   end
 %>

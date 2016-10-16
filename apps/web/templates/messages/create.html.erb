@@ -1,4 +1,28 @@
-<div class="link">
-  <h3>Your message's link</h3>
-  <%= "#{host}/messages/#{message.url}" %>
-</div>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Spy Messages</title>
+    <%= stylesheet 'grid.min.css' %>
+    <%= stylesheet 'input.min.css' %>
+    <%= stylesheet 'button.min.css' %>
+    <%= javascript 'clipboard.min.js' %>
+    <%= favicon %>
+  </head>
+  <body>
+    <div class="ui four column centered grid">
+      <div class="column">
+        <h3>Your message's link</h3>
+        <div class="ui fluid action input">
+          <input type="text", id="link" value= <%= "#{host}/messages/#{message.url}" %> >
+          <button class="ui teal right labeled icon button", id="btn", data-clipboard-target="#link">
+            Copy
+          </button>
+        </div>
+      </div>
+    </div>
+    <script>
+      var btn = document.getElementById('btn');
+      var clipboard = new Clipboard(btn);
+    </script>
+  </body>
+</html>
