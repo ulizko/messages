@@ -16,7 +16,7 @@ RSpec.describe Web::Controllers::Messages::Create do
   end
   
   context 'when valid params' do
-    let(:params) { Hash[message: {text: 'New Message!', hours_to_destroy: 2, password: '123'}] }
+    let(:params) { Hash[message: {text: 'New Message!', hours_to_destroy: 2, password: '123', encrypted: 'true'}] }
     it 'is successful' do
       response = action.call(params)
       expect(response[0]).to eq 200

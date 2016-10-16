@@ -6,4 +6,11 @@ class MessageRepository
       where(url: url)
     end.first
   end
+  
+  def self.expired
+    query do
+      # reverse_order(:time_of_destroy).
+      where { time_of_destroy <= Time.now }
+    end.all
+  end
 end
