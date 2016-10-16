@@ -27,6 +27,6 @@ feature 'Create message' do
     fill_in 'Password', with: '123'
     page.all("input[id='message-encrypted']", visible: false).first.set('true')
     click_button 'Create Message'
-    expect(page).to have_content("/messages/#{message.url}")
+    expect(page).to have_field('link', :type => 'text', with: /\/messages\/#{message.url}/)
   end
 end
