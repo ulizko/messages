@@ -6,13 +6,13 @@ module Web::Controllers::Messages
 
     def call(params)
       if @message =  MessageRepository.find_by_url(params[:url])
-        message.text = '' if message.viewed?
-        if message.destroyed?
+        if message.viewed?
+          MessageRepository.delete(message)
           wrong_link
         else
           message.visits_count += 1
+          MessageRepository.update(message)
         end
-        MessageRepository.update(message)
       else
         wrong_link
       end

@@ -8,6 +8,7 @@ module Web::Controllers::Messages
       required(:message).schema do
         required(:text).filled
         required(:password).filled(min_size?: 3)
+        required(:encrypted).filled
         optional(:hours_to_destroy).maybe(:int?)
         optional(:visits_limit).maybe(:int?)
 
