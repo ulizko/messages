@@ -1,10 +1,9 @@
 source 'https://rubygems.org'
-ruby '2.3.1'
 
-gem 'bundler'
 gem 'rake'
-gem 'hanami',       '~> 0.8'
-gem 'hanami-model', '~> 0.6'
+gem 'hanami',       '~> 1.0'
+gem 'hanami-model', '~> 1.0'
+gem 'hanami-utils'
 
 gem 'pg'
 gem "core_ext"

@@ -5,13 +5,12 @@ module Web::Controllers::Messages
     expose :message
 
     def call(params)
-      if @message =  MessageRepository.find_by_url(params[:url])
+      if @message =  MessageRepository.new.find_by_url(params[:url])
         if message.viewed?
-          MessageRepository.delete(message)
+          MessageRepository.new.delete(message.id)
           wrong_link
         else
-          message.visits_count += 1
-          MessageRepository.update(message)
+          MessageRepository.new.update(message.id, visits_count: message.visits_count + 1)
         end
       else
         wrong_link

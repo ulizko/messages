@@ -1,16 +1,18 @@
-class Message
-  include Hanami::Entity
+require 'core_ext/integer'
 
-  attributes :id, :text, :url, :time_of_destroy, :visits_limit, :visits_count, :hours_to_destroy
+class Message < Hanami::Entity
 
-  def url
-    @url ||= SecureRandom.hex(8)
+  def initialize(attributes = {})
+    super(
+      {
+        url: url_hash,
+        time_of_destroy: attributes[:hours_to_destroy].nil? ? nil : Time.now + attributes[:hours_to_destroy].hours
+      }.merge(attributes)
+    )
   end
 
-  def time_of_destroy
-    unless hours_to_destroy.nil?
-      @time_of_destroy ||= Time.now + hours_to_destroy.hours
-    end
+  def url_hash
+    SecureRandom.hex(8)
   end
 
   def viewed?

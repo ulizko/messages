@@ -1,16 +1,10 @@
-class MessageRepository
-  include Hanami::Repository
+class MessageRepository < Hanami::Repository
 
-  def self.find_by_url(url)
-    query do
-      where(url: url)
-    end.first
+  def find_by_url(url)
+    messages.where(url: url).first
   end
-  
-  def self.expired
-    query do
-      # reverse_order(:time_of_destroy).
-      where { time_of_destroy <= Time.now }
-    end.all
+
+  def expired
+    messages.where { time_of_destroy <= Time.now }
   end
 end
